@@ -1,0 +1,11 @@
+{
+    "name" : "Stackup Founding Membership",
+    "description": "Stackup Founding Membership NFT",
+    "image" : "https://ipfs.io/ipfs/QmSDkrXze4Bbnd7HqSoYvNkeZCQA5YpHXtMB1JRoritfFf",
+    "attributes": [
+        {
+            "trait_type": "Generation",
+            "value": 1
+        }
+    ]
+}

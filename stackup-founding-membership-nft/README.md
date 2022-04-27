@@ -22,4 +22,6 @@ npx hardhat help
 5) To deploy the contract see the below command (no need to compile as it does this implicitly)
 
 ## Deploy contracts
+
+Testnet:
 npx hardhat run --network mumbai scripts/deploy.js

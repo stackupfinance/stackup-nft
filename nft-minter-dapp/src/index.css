@@ -51,6 +51,7 @@ h2 {
   font-family: "League Spartan", sans-serif;
   width: 50%;
   line-height: 2;
+  margin-bottom: 50px;
 }
 
 #h2-container {
@@ -197,4 +198,45 @@ option.SetPaymentType {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
+}
+
+#card-description {
+  width: 50%;
+  padding: 20px;
+}
+
+#perks-list {
+  margin-left: 30px;
+  line-height: 2;
+}
+
+li {
+  padding-left: 1rem;
+  text-indent: -0.7rem;
+  font-size: 24px;
+  font-weight: 300;
+  font-family: "League Spartan", sans-serif;
+}
+
+li::before {
+  content: "🪙	";
+}
+
+#li-gift::before {
+  content: "🎁	";
+}
+
+#li-irl::before {
+  content: "🌴	";
+}
+
+#li-card::before {
+  content: "💳	";
+}
+
+p {
+  font-weight: 300;
+  font-family: "League Spartan", sans-serif;
+  font-size: 24px;
+  line-height: 2;
 }

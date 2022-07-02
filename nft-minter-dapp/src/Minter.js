@@ -126,9 +126,16 @@ const Minter = () => {
             <source src="images/card.webm" type="video/webm" />
           </video>
         </div>
-        <div className="card-description-flex">
+        <div id="card-description">
           <br />
-          <p>The Stackup card gives you access to </p>
+          <p>The Stackup Founding Card NFT gives you access to:</p>
+          <ul id="perks-list">
+            <li>Lifetime discounts on transaction fees</li>
+            <li id="li-gift">A surprise gift box</li>
+            <li id="li-card">A physical Stackup card</li>
+            <li id="li-irl">Access to in-real-life events</li>
+          </ul>
+          <br />
           <div className="button-group">
             <button
               className="button"

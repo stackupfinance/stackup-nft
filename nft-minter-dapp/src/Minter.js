@@ -63,54 +63,58 @@ const Minter = () => {
 
   return (
     <div className="Minter">
-      <button
-        className="button js-modal-trigger"
-        data-target="connect-wallet-modal"
-        id="walletButton"
-      >
-        {walletAddress.length > 0 ? (
-          "Connected: " +
-          String(walletAddress).substring(0, 6) +
-          "..." +
-          String(walletAddress).substring(38)
-        ) : (
-          <span>Connect Wallet</span>
-        )}
-      </button>
-      <div id="connect-wallet-modal" className="modal">
-        <div className="modal-background"></div>
-        <div className="modal-card">
-          <header className="modal-card-head">
-            <p className="modal-card-title">Connect a wallet</p>
-            <button className="delete" aria-label="close"></button>
-          </header>
-          <section className="modal-card-body">
-            <p>Connect with one of our available wallet providers:</p>
-            <button
-              className="button wallet-button"
-              onClick={() => connectWalletHandler("metamask")}
-            >
-              <span className="icon is-small">
-                <img src="/images/metamask.png" alt="Metamask" />
-              </span>
-              <span>Metamask</span>
-            </button>
-            <button
-              className="button wallet-button"
-              onClick={connectWalletHandler}
-            >
-              <span className="icon is-small">
-                <img src="/images/wallet-connect.png" alt="Wallet Connect" />
-              </span>
-              <span>Wallet Connect</span>
-            </button>
-          </section>
+      <div>
+        <button
+          className="button js-modal-trigger"
+          data-target="connect-wallet-modal"
+          id="walletButton"
+        >
+          {walletAddress.length > 0 ? (
+            "Connected: " +
+            String(walletAddress).substring(0, 6) +
+            "..." +
+            String(walletAddress).substring(38)
+          ) : (
+            <span>Connect Wallet</span>
+          )}
+        </button>
+        <div id="connect-wallet-modal" className="modal">
+          <div className="modal-background"></div>
+          <div className="modal-card">
+            <header className="modal-card-head">
+              <p className="modal-card-title">Connect a wallet</p>
+              <button className="delete" aria-label="close"></button>
+            </header>
+            <section className="modal-card-body">
+              <p>Connect with one of our available wallet providers:</p>
+              <button
+                className="button wallet-button"
+                onClick={() => connectWalletHandler("metamask")}
+              >
+                <span className="icon is-small">
+                  <img src="/images/metamask.png" alt="Metamask" />
+                </span>
+                <span>Metamask</span>
+              </button>
+              <button
+                className="button wallet-button"
+                onClick={connectWalletHandler}
+              >
+                <span className="icon is-small">
+                  <img src="/images/wallet-connect.png" alt="Wallet Connect" />
+                </span>
+                <span>Wallet Connect</span>
+              </button>
+            </section>
+          </div>
         </div>
+        <a href="https://stackup.sh">
+          <div className="logo-container">
+            <img src="/images/logotype-blue-white-64.png" alt="Stackup logo" />
+          </div>
+        </a>
       </div>
-      <br></br>
-      <div className="logo-container">
-        <img src="/images/logotype-blue-white-64.png" alt="Stackup logo" />
-      </div>
+
       <h1 id="title">Stackup Founding Card</h1>
 
       <div id="h2-container">
@@ -120,13 +124,13 @@ const Minter = () => {
         </h2>
       </div>
 
-      <div id="card-container">
+      <div className="card-container">
         <div className="video-container">
           <video className="video" controls autoPlay loop muted>
             <source src="images/card.webm" type="video/webm" />
           </video>
         </div>
-        <div id="card-description">
+        <div className="card-description">
           <br />
           <p>The Stackup Founding Card NFT gives you access to:</p>
           <ul id="perks-list">
@@ -135,6 +139,7 @@ const Minter = () => {
             <li id="li-card">A physical Stackup card</li>
             <li id="li-irl">Access to in-real-life events</li>
           </ul>
+          <br />
           <br />
           <div className="button-group">
             <button
@@ -153,11 +158,13 @@ const Minter = () => {
               onChange={(e) => setPaymentType(e.target.value)}
             >
               <option className="SetPaymentType" value="">
-                Set Payment Type
+                Select your payment method
               </option>
               <option value="stripe">Credit Card</option>
               <option value="matic">MATIC on Polygon Network</option>
             </select>
+            <br />
+            <br />
           </div>
         </div>
 

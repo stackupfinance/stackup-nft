@@ -2,11 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "bulma/css/bulma.css";
 import "./index.css";
+import Background from "./Background";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
+    <Background />
     <App />
   </React.StrictMode>,
   document.getElementById("root")

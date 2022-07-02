@@ -7,8 +7,29 @@ body {
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(45deg, #002770, #230f6d);
-  height: 100vh;
+  height:100vh;
+  margin:0;
+  width:100vw;
+}
+
+
+.bg {
+  position:fixed;
+  left:0%;
+  top:0%;
+  right:0%;
+  bottom:0%;
+  z-index:-10;
+  overflow:visible;
+  width:100%;
+  height:100%;
+  padding-top:0;
+  background-color:#001b2d;
+  background-image: linear-gradient(45deg,#002770,#230f6d);
+  opacity:1;
+  mix-blend-mode:normal;
+  object-fit:fill;
+
 }
 
 code {
@@ -17,11 +38,10 @@ code {
 }
 
 .Minter {
-  max-width: 100vh;
+  max-width: 150vh;
   max-height: 100vh;
-  padding: 30px 100px;
+  padding: 30px 50px;
   margin: 0 auto;
-  text-align: left;
 }
 
 .paymentOptions {
@@ -41,7 +61,7 @@ h1 {
 
 h2 {
   display: block;
-  font-size: 1.5em;
+  font-size: 24px;
   margin-block-start: 0.83em;
   margin-block-end: 0.83em;
   margin-inline-start: 0px;
@@ -49,7 +69,6 @@ h2 {
   font-weight: 300;
   text-align: center;
   font-family: "League Spartan", sans-serif;
-  width: 50%;
   line-height: 2;
   margin-bottom: 50px;
 }
@@ -105,7 +124,9 @@ button {
 }
 
 .logo-container {
-  margin-top: 30px;
+  display:flex;
+  align-items:center;
+  max-width:150px;
 }
 
 .video-container {
@@ -116,8 +137,8 @@ button {
 }
 
 .video {
-  margin-top: -5%;
-  margin-bottom: -5%;
+  margin-top: -15%;
+  margin-bottom: -15%;
   overflow: hidden;
 }
 
@@ -131,8 +152,8 @@ button {
 #walletButton {
   text-align: right;
   float: right;
-  margin-bottom: 50px;
   line-height: 16px;
+  margin-left:10px;
 }
 
 .button-group {
@@ -193,45 +214,58 @@ option.SetPaymentType {
   display: none;
 }
 
-#card-container {
+.card-container {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+  flex-wrap:wrap;
+  justify-content: space-evenly;
 }
 
-#card-description {
-  width: 50%;
-  padding: 20px;
+.card-description {
+  max-width: 50%;
+  word-wrap:normal;
+  padding: 10px;
 }
 
 #perks-list {
   margin-left: 30px;
   line-height: 2;
+  white-space:pre-wrap;
 }
 
 li {
+  list-style-type:none;
   padding-left: 1rem;
-  text-indent: -0.7rem;
   font-size: 24px;
   font-weight: 300;
   font-family: "League Spartan", sans-serif;
+  word-wrap:normal;
+  text-indent: -55px;
+}
+
+ul {
+  list-style-type:none;
+  list-style-position:outside;
 }
 
 li::before {
-  content: "🪙	";
+  content: "🪙";
+  margin-right:30px;
 }
 
 #li-gift::before {
-  content: "🎁	";
+  content: "🎁";
+  margin-right:24px;
 }
 
 #li-irl::before {
-  content: "🌴	";
+  content: "🌴";
+  margin-right:24px;
 }
 
 #li-card::before {
-  content: "💳	";
+  content: "💳";
+  margin-right:22px;
 }
 
 p {
@@ -239,4 +273,27 @@ p {
   font-family: "League Spartan", sans-serif;
   font-size: 24px;
   line-height: 2;
+}
+@media screen and (max-width: 767px) {
+  .card-container {
+    display: flex;
+    justify-content:flex-start;
+    align-items:center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width:80vw;
+    width:auto;
+  }
+
+  .video-container{
+    width:auto;
+  }
+
+  .card-description{
+    max-width: 100%;
+  }
+
 }

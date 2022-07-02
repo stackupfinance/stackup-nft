@@ -51,12 +51,14 @@ const Minter = () => {
   };
 
   const onMintHandler = async (walletAddress) => {
-    console.log(paymentType);
+    // TODO: Add referral code text field.
+    // TODO: Pass referral code text along so that it is logged when a transaction goes through.
 
     if (paymentType == "matic") {
       const { status } = await mintNFT(walletAddress, paymentType);
       setStatus(status);
     } else {
+      // TODO: Put link to Stripe
       window.open("https://stackup.sh/stripe", "_blank").focus();
     }
   };

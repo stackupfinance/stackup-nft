@@ -51,16 +51,9 @@ const Minter = () => {
   };
 
   const onMintHandler = async (walletAddress) => {
-    // TODO: Add referral code text field.
-    // TODO: Pass referral code text along so that it is logged when a transaction goes through.
-
-    if (paymentType == "matic") {
+      setPaymentType("matic");
       const { status } = await mintNFT(walletAddress, paymentType);
       setStatus(status);
-    } else {
-      // TODO: Put link to Stripe
-      window.open("https://stackup.sh/stripe", "_blank").focus();
-    }
   };
 
   return (
@@ -110,70 +103,23 @@ const Minter = () => {
             </section>
           </div>
         </div>
-        <a href="https://stackup.sh">
-          <div className="logo-container">
-            <img src="/images/logotype-blue-white-64.png" alt="Stackup logo" />
-          </div>
-        </a>
       </div>
 
-      <h1 id="title">Stackup Founding Card</h1>
 
-      <div id="h2-container">
-        <h2>
-          A limited edition membership that gives you perks in the Stackup
-          wallet
-        </h2>
-      </div>
-
-      <div className="card-container">
-        <div className="video-container">
-          <video className="video" controls autoPlay loop muted>
-            <source src="images/card.webm" type="video/webm" />
-          </video>
-        </div>
-        <div className="card-description">
-          <br />
-          <p>The Stackup Founding Card NFT gives you access to:</p>
-          <ul id="perks-list">
-            <li>Lifetime discounts on transaction fees</li>
-            <li id="li-gift">A surprise gift box</li>
-            <li id="li-card">A physical Stackup card</li>
-            <li id="li-irl">Access to in-real-life events</li>
-          </ul>
-          <br />
-          <br />
-          <div className="button-group">
+      <div className="button-group">
             <button
               className="button"
               id="mintButton"
               onClick={() => onMintHandler(walletAddress)}
-              disabled={!paymentType}
+              disabled={!walletAddress}
             >
               Buy NFT
             </button>
           </div>
-          <div className="paymentOptions">
-            <select
-              id="paySelect"
-              class="form-control"
-              onChange={(e) => setPaymentType(e.target.value)}
-            >
-              <option className="SetPaymentType" value="">
-                Select your payment method
-              </option>
-              <option value="stripe">Credit Card</option>
-              <option value="matic">MATIC on Polygon Network</option>
-            </select>
-            <br />
-            <br />
-          </div>
-        </div>
 
         <p id="status">{status}</p>
 
         <br />
-      </div>
     </div>
   );
 };

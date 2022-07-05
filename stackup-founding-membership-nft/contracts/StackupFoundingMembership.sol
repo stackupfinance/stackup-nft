@@ -22,8 +22,8 @@ contract StackupFoundingMembership is ERC721URIStorage {
 
     constructor(string memory _name, string memory _symbol) ERC721(_name, _symbol) {
         owner = msg.sender;
-        price = .01 ether;
-        priceUSDC = 1; // 6 decimals
+        price = 109.0 ether;
+        priceUSDC = 50000000.0; // 6 decimals
         usdc = IERC20(usdcAddress);
     }
 

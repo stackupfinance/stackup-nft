@@ -1,12 +1,13 @@
 // contracts/StackupFoundingMembership.sol
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.15;
 
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/interfaces/IERC20.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract StackupFoundingMembership is ERC721URIStorage {
+contract StackupFoundingMembership is ERC721 {
+    string public baseURI;
     address public owner;
     uint public price;
     uint public priceUSDC;
@@ -20,11 +21,22 @@ contract StackupFoundingMembership is ERC721URIStorage {
 
     IERC20 private usdc;
 
-    constructor(string memory _name, string memory _symbol) ERC721(_name, _symbol) {
+    constructor(string memory _name, string memory _symbol, uint256 _price, uint256 _priceUSDC, string memory _baseTokenURI) ERC721(_name, _symbol) {
+        baseURI = _baseTokenURI;
         owner = msg.sender;
-        price = 109.0 ether;
-        priceUSDC = 50000000.0; // 6 decimals
-        usdc = IERC20(usdcAddress);
+        price = _price;
+        priceUSDC = _priceUSDC;
+        usdc = IERC20(usdcTestnetAddress);
+        // nextTokenId is initialized to 1, since starting at 0 leads to higher gas cost for the first minter
+        _tokenIds.increment();
+    }
+
+    function _baseURI() internal view override returns (string memory) {
+        return baseURI;
+    }
+
+    function setBaseURI(string memory _uri) public onlyOwner {
+        baseURI = _uri;
     }
 
     function setPrice(uint newPrice) public onlyOwner {
@@ -35,17 +47,16 @@ contract StackupFoundingMembership is ERC721URIStorage {
         priceUSDC = newPrice;
     }
 
-    function mint(string memory tokenURI) public onlyOwner returns (uint256) {
+    function mint() public onlyOwner returns (uint256) {
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();
         _mint(msg.sender, newItemId);
-        _setTokenURI(newItemId, tokenURI);
 
         return newItemId;
     }
 
-    function mintToAddress(address recipient, string memory tokenURI, bool paymentInUSDC) public payable returns (uint256) {
+    function mintToAddress(address recipient, bool paymentInUSDC) public payable returns (uint256) {
         bool paymentSucceeded = false;
 
         if (paymentInUSDC) {
@@ -61,7 +72,6 @@ contract StackupFoundingMembership is ERC721URIStorage {
 
         uint256 newItemId = _tokenIds.current();
         _mint(recipient, newItemId);
-        _setTokenURI(newItemId, tokenURI);
 
         return newItemId;
     }
@@ -92,6 +102,7 @@ contract StackupFoundingMembership is ERC721URIStorage {
     }
 
     function withdraw() public onlyOwner {
+        require(address(this).balance > 0, "There are no funds to withdraw.");
         payable(msg.sender).transfer(address(this).balance);
     }
 

@@ -27,7 +27,7 @@ contract StackupFoundingMembership is ERC721 {
         price = _price;
         priceUSDC = _priceUSDC;
         usdc = IERC20(usdcTestnetAddress);
-        // nextTokenId is initialized to 1, since starting at 0 leads to higher gas cost for the first minter
+        // _tokenIds is initialized to 1, since starting at 0 leads to higher gas cost for the first minter
         _tokenIds.increment();
     }
 
